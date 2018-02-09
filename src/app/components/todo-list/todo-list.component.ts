@@ -18,7 +18,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      let id = Number(params["id"]);
+      let id = params["id"];
       if (!id) {
         id = 1;
       }
@@ -30,13 +30,7 @@ export class TodoListComponent implements OnInit {
           return;
         }
 
-        /**
-         * FIXME: Remove timeout for real application
-         * Used to disable progress bar flickering on local machine
-         */
-        setTimeout(() => {
-          this.todoList = this.TodoListService.todoListById(id);
-        }, Math.floor(Math.random() * (1000 - 250 + 1) + 250));
+        this.todoList = this.TodoListService.todoListById(id);
       });
     });
   }

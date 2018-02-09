@@ -33,15 +33,15 @@ export class TodoListService {
   addTodo(todoListId: number, todo: Todo): Promise<Todo> {
     return new Promise((resolve, reject) => {
       const todoList = this.todoListById(todoListId);
-      todo.id = todoList.todos[todoList.todos.length - 1] + 1;
-      todoList.todos.push({ ...todo });
+      todo.id = todoList.todos[todoList.todos.length - 1].id + 1;
+      todoList.todos.push(Object.assign({}, todo));
       this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
       resolve(todo);
     });
   }
 
   todoListById(id: number) {
-    return this.dataStore.todoLists.find(x => x.id === id);
+    return this.dataStore.todoLists.find(x => x.id === +id);
   }
 
   loadAll() {

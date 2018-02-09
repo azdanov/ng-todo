@@ -14,12 +14,16 @@ export class AddTodoComponent implements OnInit {
   constructor(private TodoListService: TodoListService) {}
 
   ngOnInit() {
+    this.initTodo();
+  }
+
+  initTodo() {
     this.todo = { id: null, completed: false, note: "" } as Todo;
   }
 
   addTodo(input: ElementRef) {
     this.TodoListService.addTodo(this.todoListId, this.todo).then(todo => {
-      this.todo.note = "";
+      this.initTodo();
     });
   }
 }

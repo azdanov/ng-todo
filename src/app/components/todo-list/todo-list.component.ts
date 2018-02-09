@@ -18,9 +18,11 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      let id = Number(params["id"]);
+      let id = params["id"];
       if (!id) {
         id = 1;
+      } else {
+        id = Number(id);
       }
 
       this.todoList = null;

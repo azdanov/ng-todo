@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from "@angular/core";
 
 @Component({
   selector: "app-toolbar",
@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 })
 export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
+  @ViewChild("sidenavButton") sidenavButton: ElementRef;
 
   constructor() {}
 

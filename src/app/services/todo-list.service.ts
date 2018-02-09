@@ -33,7 +33,7 @@ export class TodoListService {
   addTodo(todoListId: number, todo: Todo): Promise<Todo> {
     return new Promise((resolve, reject) => {
       const todoList = this.todoListById(todoListId);
-      todo.id = todoList.todos[todoList.todos.length - 1] + 1;
+      todo.id = todoList.todos[todoList.todos.length - 1].id + 1;
       todoList.todos.push({ ...todo });
       this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
       resolve(todo);

@@ -1,9 +1,10 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()" class="sidenav mat-elevation-z6">
+  <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()"
+               class="sidenav mat-elevation-z6">
     <mat-toolbar>
       <span>Todo Lists</span>
       <span class="spacer"></span>
-      <button (click)="onClick" mat-mini-fab>
+      <button mat-mini-fab>
         <mat-icon aria-label="Add new todo list">add</mat-icon>
       </button>
     </mat-toolbar>

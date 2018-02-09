@@ -1,0 +1,13 @@
+.mat-checkbox-checked {
+  text-decoration: line-through;
+}
+
+.deleteList {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  @media screen and (min-width: 720px) {
+    right: 25px;
+    top: 20px;
+  }
+}

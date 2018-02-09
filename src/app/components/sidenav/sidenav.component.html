@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()" class="sidenav mat-elevation-z6">
+    <mat-toolbar>
+      <span>Todo Lists</span>
+      <span class="spacer"></span>
+      <button (click)="onClick" mat-mini-fab>
+        <mat-icon aria-label="Add new todo list">add</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-list *ngFor="let list of todoLists | async">
+      <a mat-button [routerLink]="['', list.id]" class="todoListItem">
+        <mat-list-item>{{ list.listName }}</mat-list-item>
+      </a>
+    </mat-list>
+  </mat-sidenav>
+  <!-- Body -->
+  <mat-sidenav-content class="sidenav-content">
+    <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

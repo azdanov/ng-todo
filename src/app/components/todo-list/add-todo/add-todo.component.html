@@ -1,0 +1,7 @@
+<mat-form-field>
+  <input #todoInput matInput [(ngModel)]="todo.note" placeholder="New todo"
+         aria-label="Input new todo">
+</mat-form-field>
+<button (click)="addTodo(todoInput)" mat-icon-button>
+  <mat-icon aria-label="Add new todo">add_circle</mat-icon>
+</button>

@@ -1,0 +1,28 @@
+.sidenav-container {
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+.sidenav {
+  width: 240px;
+}
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.wrapper {
+  margin: 50px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.todoListItem {
+  width: 100%;
+}

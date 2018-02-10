@@ -23,7 +23,11 @@ export class TodoListService {
 
   addTodoList(list: TodoList): Promise<TodoList> {
     return new Promise((resolve, reject) => {
-      list.id = this.dataStore.todoLists[this.dataStore.todoLists.length - 1].id + 1;
+      if (this.dataStore.todoLists.length) {
+        list.id = this.dataStore.todoLists[this.dataStore.todoLists.length - 1].id + 1;
+      } else {
+        list.id = 1;
+      }
       this.dataStore.todoLists.push(list);
       this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
       resolve(list);
@@ -33,7 +37,11 @@ export class TodoListService {
   addTodo(todoListId: number, todo: Todo): Promise<Todo> {
     return new Promise((resolve, reject) => {
       const todoList = this.todoListById(todoListId);
-      todo.id = todoList.todos[todoList.todos.length - 1].id + 1;
+      if (todoList.todos.length) {
+        todo.id = todoList.todos[todoList.todos.length - 1].id + 1;
+      } else {
+        todo.id = 1;
+      }
       todoList.todos.push(Object.assign({}, todo));
       this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
       resolve(todo);

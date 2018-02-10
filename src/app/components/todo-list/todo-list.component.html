@@ -8,7 +8,7 @@
         <h2>{{ todoList.listName }}</h2>
         <app-add-todo [todoListId]="todoList.id"></app-add-todo>
       </mat-card-title>
-      <button (click)="onClick" mat-mini-fab class="deleteList">
+      <button (click)="onClick" mat-mini-fab class="deleteList" color="warn">
         <mat-icon aria-label="Delete this todo list">delete_forever</mat-icon>
       </button>
     </mat-card-header>
@@ -17,6 +17,20 @@
       <mat-list role="list">
         <mat-list-item role="listitem" *ngFor="let todo of todoList.todos">
           <mat-checkbox [checked]="todo.completed">{{ todo.note }}</mat-checkbox>
+          <div class="spacer"></div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon color="warn">remove</mat-icon>
+              <span>Remove Todo</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon color="accent">edit</mat-icon>
+              <span>Edit Todo</span>
+            </button>
+          </mat-menu>
         </mat-list-item>
       </mat-list>
     </mat-card-content>

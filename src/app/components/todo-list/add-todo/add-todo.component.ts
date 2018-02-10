@@ -21,7 +21,10 @@ export class AddTodoComponent implements OnInit {
     this.todo = { id: null, completed: false, note: "" } as Todo;
   }
 
-  addTodo(input: ElementRef) {
+  addTodo(input) {
+    if (!this.todo.note.trim()) {
+      return;
+    }
     this.TodoListService.addTodo(this.todoListId, this.todo).then(todo => {
       this.initTodo();
     });

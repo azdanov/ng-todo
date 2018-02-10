@@ -5,8 +5,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { IntroComponent } from "./components/intro/intro.component";
+import { NewListDialogComponent } from "./components/sidenav/new-list-dialog/new-list-dialog.component";
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { AddTodoComponent } from "./components/todo-list/add-todo/add-todo.component";
+import { EditTodoDialogComponent } from "./components/todo-list/edit-todo-dialog/edit-todo-dialog.component";
 import { TodoListComponent } from "./components/todo-list/todo-list.component";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { TodoListService } from "./services/todo-list.service";
@@ -20,6 +22,8 @@ import { MaterialModule } from "./shared/app-material.module";
     TodoListComponent,
     IntroComponent,
     AddTodoComponent,
+    NewListDialogComponent,
+    EditTodoDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,10 @@ import { MaterialModule } from "./shared/app-material.module";
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+  ],
+  entryComponents: [
+    NewListDialogComponent,
+    EditTodoDialogComponent,
   ],
   providers: [TodoListService],
   bootstrap: [AppComponent],

@@ -4,8 +4,8 @@
     <mat-toolbar>
       <span>Todo Lists</span>
       <span class="spacer"></span>
-      <button mat-mini-fab>
-        <mat-icon aria-label="Add new todo list">add</mat-icon>
+      <button #newListButton mat-mini-fab (click)="openNewTodoListDialog()">
+        <mat-icon aria-label="Add new todo list">playlist_add</mat-icon>
       </button>
     </mat-toolbar>
     <mat-list *ngFor="let list of todoLists | async">

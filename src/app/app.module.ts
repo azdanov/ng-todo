@@ -9,6 +9,7 @@ import { NewListDialogComponent } from "./components/sidenav/new-list-dialog/new
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { AddTodoComponent } from "./components/todo-list/add-todo/add-todo.component";
 import { EditTodoDialogComponent } from "./components/todo-list/edit-todo-dialog/edit-todo-dialog.component";
+import { RemoveTodoListComponent } from "./components/todo-list/remove-todo-list/remove-todo-list.component";
 import { TodoListComponent } from "./components/todo-list/todo-list.component";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { TodoListService } from "./services/todo-list.service";
@@ -24,6 +25,7 @@ import { MaterialModule } from "./shared/app-material.module";
     AddTodoComponent,
     NewListDialogComponent,
     EditTodoDialogComponent,
+    RemoveTodoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { MaterialModule } from "./shared/app-material.module";
   entryComponents: [
     NewListDialogComponent,
     EditTodoDialogComponent,
+    RemoveTodoListComponent,
   ],
   providers: [TodoListService],
   bootstrap: [AppComponent],

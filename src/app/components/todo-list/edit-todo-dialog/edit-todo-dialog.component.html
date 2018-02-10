@@ -3,7 +3,7 @@
   <mat-form-field #todoInput>
     <input #note matInput [(ngModel)]="data.todo.note" placeholder="Note"
            aria-label="Note" maxlength="30">
-    <mat-hint align="end">{{note.value?.length || 0}}/30</mat-hint>
+    <mat-hint align="end">{{ note.value?.length || 0 }}/30</mat-hint>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

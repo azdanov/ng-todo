@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Todo } from "../../../models/todo";
 import { TodoList } from "../../../models/todo-list";
 import { TodoListService } from "../../../services/todo-list.service";

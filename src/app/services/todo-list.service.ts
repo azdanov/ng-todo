@@ -23,8 +23,9 @@ export class TodoListService {
 
   addTodoList(list: TodoList): Promise<TodoList> {
     return new Promise((resolve, reject) => {
-      if (this.dataStore.todoLists.length) {
-        list.id = this.dataStore.todoLists[this.dataStore.todoLists.length - 1].id + 1;
+      if (this.dataStore.todoLists.length > 0) {
+        list.id =
+          this.dataStore.todoLists[this.dataStore.todoLists.length - 1].id + 1;
       } else {
         list.id = 1;
       }
@@ -34,9 +35,19 @@ export class TodoListService {
     });
   }
 
+  removeTodoList(rList: TodoList): Promise<TodoList> {
+    return new Promise((resolve, reject) => {
+      this.dataStore.todoLists = this.dataStore.todoLists.filter(
+        list => list.id !== rList.id,
+      );
+      this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
+      resolve(rList);
+    });
+  }
+
   addTodo(todoList: TodoList, aTodo: Todo): Promise<Todo> {
     return new Promise((resolve, reject) => {
-      if (todoList.todos.length) {
+      if (todoList.todos.length > 0) {
         aTodo.id = todoList.todos[todoList.todos.length - 1].id + 1;
       } else {
         aTodo.id = 1;

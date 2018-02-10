@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddTodoComponent } from "./add-todo.component";
+import { RemoveTodoListComponent } from "./remove-todo-list.component";
 
-describe("AddTodoComponent", () => {
-  let component: AddTodoComponent;
-  let fixture: ComponentFixture<AddTodoComponent>;
+describe("RemoveTodoListComponent", () => {
+  let component: RemoveTodoListComponent;
+  let fixture: ComponentFixture<RemoveTodoListComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [AddTodoComponent],
+        declarations: [RemoveTodoListComponent],
       }).compileComponents();
     }),
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddTodoComponent);
+    fixture = TestBed.createComponent(RemoveTodoListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

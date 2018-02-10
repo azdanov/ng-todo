@@ -1,7 +1,7 @@
 <mat-form-field #todoInput>
   <input #note matInput [(ngModel)]="todo.note" placeholder="New todo"
-         aria-label="Input new todo" maxlength="30">
-  <mat-hint align="end">{{note.value?.length || 0}}/30</mat-hint>
+         aria-label="Input new todo" maxlength="30" (keyup.enter)="addTodo(todoInput)">
+  <mat-hint align="end">{{ note.value?.length || 0 }}/30</mat-hint>
 </mat-form-field>
 <button (click)="addTodo(todoInput)" mat-icon-button>
   <mat-icon aria-label="Add new todo" color="accent">add_circle</mat-icon>

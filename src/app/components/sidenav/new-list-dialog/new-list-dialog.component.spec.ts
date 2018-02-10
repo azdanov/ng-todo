@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NewListDialogComponent } from './new-list-dialog.component';
+import { NewListDialogComponent } from "./new-list-dialog.component";
 
-describe('NewListDialogComponent', () => {
+describe("NewListDialogComponent", () => {
   let component: NewListDialogComponent;
   let fixture: ComponentFixture<NewListDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NewListDialogComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [NewListDialogComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NewListDialogComponent);
@@ -19,7 +20,7 @@ describe('NewListDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

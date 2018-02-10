@@ -8,7 +8,8 @@
         <h2>{{ todoList.listName }}</h2>
         <app-add-todo [todoList]="todoList"></app-add-todo>
       </mat-card-title>
-      <button (click)="onClick" mat-mini-fab class="deleteList" color="warn">
+      <button mat-mini-fab class="deleteList" color="warn"
+              (click)="openRemoveTodoListDialog(todoList)">
         <mat-icon aria-label="Delete this todo list">delete_forever</mat-icon>
       </button>
     </mat-card-header>

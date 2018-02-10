@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Todo } from "../../models/todo";
 import { TodoList } from "../../models/todo-list";
 import { TodoListService } from "../../services/todo-list.service";
 import { EditTodoDialogComponent } from "./edit-todo-dialog/edit-todo-dialog.component";
+import { RemoveTodoListComponent } from "./remove-todo-list/remove-todo-list.component";
 
 @Component({
   selector: "app-todo-list",
@@ -16,6 +17,7 @@ export class TodoListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private TodoListService: TodoListService,
     public dialog: MatDialog,
   ) {}
@@ -55,5 +57,21 @@ export class TodoListComponent implements OnInit {
 
   removeTodo(todoList: TodoList, todo: Todo) {
     this.TodoListService.removeTodo(todoList, todo);
+  }
+
+  openRemoveTodoListDialog(todoList: TodoList) {
+    const dialogRef = this.dialog.open(RemoveTodoListComponent, {
+      width: "250px",
+      data: { todoList },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
+      this.TodoListService.removeTodoList(todoList).then(() => {
+        this.router.navigate([""]);
+      });
+    });
   }
 }

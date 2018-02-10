@@ -15,6 +15,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
   styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent implements OnInit, AfterViewInit {
+  static private;
   todoLists: Observable<TodoList[]>;
   @ViewChild(MatSidenav) private sidenav: MatSidenav;
   @ViewChild(ToolbarComponent) private toolbar: ToolbarComponent;
@@ -30,6 +31,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
   ) {}
 
+  fixButtonRippleEffectBug(button) {
+    button._elementRef.nativeElement.classList.remove("cdk-program-focused");
+    button._elementRef.nativeElement.classList.add("cdk-mouse-focused");
+  }
+
   ngOnInit() {
     this.todoLists = this.TodoListService.todoLists;
     this.TodoListService.loadAll();
@@ -42,11 +48,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     this.router.events.subscribe(() => {
       if (this.isScreenSmall()) {
         this.sidenav.close();
-        // Fix for ripple effect staying on
-        const menuButton = this.toolbar.sidenavButton as any;
-        menuButton._elementRef.nativeElement.classList.remove("cdk-program-focused");
-        menuButton._elementRef.nativeElement.classList.add("cdk-mouse-focused");
+        this.fixButtonRippleEffectBug(this.toolbar.sidenavButton);
       }
+    });
+    this.sidenav.openedChange.subscribe(() => {
+      this.fixButtonRippleEffectBug(this.newListButton);
     });
   }
 
@@ -62,10 +68,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // Fix for ripple effect staying on
-      const button = this.newListButton as any;
-      button._elementRef.nativeElement.classList.remove("cdk-program-focused");
-      button._elementRef.nativeElement.classList.add("cdk-mouse-focused");
+      this.fixButtonRippleEffectBug(this.newListButton);
       if (!result) {
         return;
       }

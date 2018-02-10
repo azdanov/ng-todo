@@ -27,6 +27,8 @@ export class TodoListComponent implements OnInit {
       let id = params["id"];
       if (!id) {
         id = 1;
+      } else {
+        id = Number(id);
       }
 
       this.todoList = null;

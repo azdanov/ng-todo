@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit } from "@angular/core";
 import { Todo } from "../../../models/todo";
+import { TodoList } from "../../../models/todo-list";
 import { TodoListService } from "../../../services/todo-list.service";
 
 @Component({
@@ -8,7 +9,7 @@ import { TodoListService } from "../../../services/todo-list.service";
   styleUrls: ["./add-todo.component.scss"],
 })
 export class AddTodoComponent implements OnInit {
-  @Input() todoListId: number;
+  @Input() todoList: TodoList;
   todo: Todo;
 
   constructor(private TodoListService: TodoListService) {}
@@ -25,7 +26,7 @@ export class AddTodoComponent implements OnInit {
     if (!this.todo.note.trim()) {
       return;
     }
-    this.TodoListService.addTodo(this.todoListId, this.todo).then(todo => {
+    this.TodoListService.addTodo(this.todoList, this.todo).then(todo => {
       this.initTodo();
     });
   }

@@ -34,17 +34,37 @@ export class TodoListService {
     });
   }
 
-  addTodo(todoListId: number, todo: Todo): Promise<Todo> {
+  addTodo(todoList: TodoList, aTodo: Todo): Promise<Todo> {
     return new Promise((resolve, reject) => {
-      const todoList = this.todoListById(todoListId);
       if (todoList.todos.length) {
-        todo.id = todoList.todos[todoList.todos.length - 1].id + 1;
+        aTodo.id = todoList.todos[todoList.todos.length - 1].id + 1;
       } else {
-        todo.id = 1;
+        aTodo.id = 1;
       }
-      todoList.todos.push(Object.assign({}, todo));
+      todoList.todos.push(Object.assign({}, aTodo));
       this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
-      resolve(todo);
+      resolve(aTodo);
+    });
+  }
+
+  editTodo(todoList: TodoList, eTodo: Todo): Promise<Todo> {
+    return new Promise((resolve, reject) => {
+      todoList.todos = todoList.todos.map(todo => {
+        if (todo.id === eTodo.id) {
+          return eTodo;
+        }
+        return todo;
+      });
+      this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
+      resolve(eTodo);
+    });
+  }
+
+  removeTodo(todoList: TodoList, rTodo: Todo): Promise<Todo> {
+    return new Promise((resolve, reject) => {
+      todoList.todos = todoList.todos.filter(todo => todo.id !== rTodo.id);
+      this._todoLists.next(Object.assign({}, this.dataStore).todoLists);
+      resolve(rTodo);
     });
   }
 

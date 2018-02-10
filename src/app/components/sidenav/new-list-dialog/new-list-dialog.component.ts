@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 export class NewListDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<NewListDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { TodoList },
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   cancel(): void {

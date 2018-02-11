@@ -20,15 +20,13 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav) private sidenav: MatSidenav;
   @ViewChild(ToolbarComponent) private toolbar: ToolbarComponent;
   @ViewChild("newListButton") private newListButton: ElementRef;
-  private mediaMatcher: MediaQueryList = matchMedia(
-    `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`,
-  );
+  private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
 
   constructor(
     private TodoListService: TodoListService,
     private ngZone: NgZone,
     private router: Router,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {}
 
   fixButtonRippleEffectBug(button) {
@@ -39,9 +37,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.todoLists = this.TodoListService.todoLists;
     this.TodoListService.loadAll();
-    this.mediaMatcher.addListener(mql =>
-      this.ngZone.run(() => (this.mediaMatcher = mql)),
-    );
+    this.mediaMatcher.addListener(mql => this.ngZone.run(() => (this.mediaMatcher = mql)));
   }
 
   ngAfterViewInit() {
